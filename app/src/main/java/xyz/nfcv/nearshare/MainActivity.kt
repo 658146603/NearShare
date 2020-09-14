@@ -80,14 +80,22 @@ class MainActivity : AppCompatActivity(), DeviceRecyclerAdapter.OnItemClickListe
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        val id = item.itemId
 
         // noinspection SimplifiableIfStatement
-        return if (id == R.id.action_settings) {
-            true
-        } else super.onOptionsItemSelected(item)
+        return when (item.itemId) {
+            R.id.action_settings -> {
+                true
+            }
+
+            R.id.action_account_settings -> {
+                startActivity(Intent(this@MainActivity, MSAccountActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
-    //endregion
+
+
     /**
      * Request COARSE_LOCATION permission required for nearshare functionality over bluetooth.
      */
@@ -128,6 +136,7 @@ class MainActivity : AppCompatActivity(), DeviceRecyclerAdapter.OnItemClickListe
         createAndAddAnonymousAccount(mPlatform)
     }
     // region TokenRegistrationCallback
+
     /**
      * This event is fired when there is a need to request a token. This event should be subscribed and ready to respond before any request is sent out.
      *
@@ -136,6 +145,7 @@ class MainActivity : AppCompatActivity(), DeviceRecyclerAdapter.OnItemClickListe
      */
     private fun onAccessTokenRequested(sender: ConnectedDevicesAccountManager, args: ConnectedDevicesAccessTokenRequestedEventArgs) {
         LOG.log(Level.INFO, "Token Access Requested")
+
     }
 
     /**
@@ -163,6 +173,10 @@ class MainActivity : AppCompatActivity(), DeviceRecyclerAdapter.OnItemClickListe
                 LOG.log(Level.INFO, "AccountManager : Added account successfully")
             }
         }
+    }
+
+    private fun createAndAddAccount(platform: ConnectedDevicesPlatform) {
+        val account = ConnectedDevicesAccount("", ConnectedDevicesAccountType.AAD)
     }
 
     /**

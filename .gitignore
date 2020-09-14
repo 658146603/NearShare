@@ -81,3 +81,6 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+app/src/main/res/raw/auth_config*
+gradle/keystore.gradle
+gradle/all.jks

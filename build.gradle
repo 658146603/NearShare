@@ -1,6 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    apply from: rootProject.file("gradle/keystore.gradle")
+
     ext.kotlin_version = '1.4.10'
     repositories {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
@@ -24,9 +26,9 @@ allprojects {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
         maven { url "https://jitpack.io" }
-        mavenCentral()
-        maven { url "${project.rootDir}/.packages" }
         maven { url 'https://pkgs.dev.azure.com/MicrosoftDeviceSDK/DuoSDK-Public/_packaging/Duo-SDK-Feed%40Local/maven/v1' }
+        maven { url "${project.rootDir}/.packages" }
+        mavenCentral()
         google()
         jcenter()
         flatDir {

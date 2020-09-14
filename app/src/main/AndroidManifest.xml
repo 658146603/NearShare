@@ -21,6 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="AllowBackup">
+        <activity android:name=".MSAccountActivity" />
         <activity
             android:name=".SendUriActivity"
             android:label="@string/uri_to_send">
@@ -58,6 +59,20 @@
                 <!-- <data android:mimeType="video/*"/> -->
                 <!-- <category android:name="android.intent.category.OPENABLE"/> -->
                 <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+            </intent-filter>
+        </activity>
+        <!-- Intent filter to capture System Browser or Authenticator calling back to our app after sign-in -->
+        <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="xyz.nfcv.nearshare"
+                    android:path="/jkrPe7U9adDJuTrsjIAt+eFr9lI="
+                    android:scheme="msauth" />
             </intent-filter>
         </activity>
     </application>

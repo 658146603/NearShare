@@ -13,4 +13,5 @@
     <string name="select_files">Selected file(s)</string>
     <string name="content">Content</string>
     <string name="send_uri_text">Send Uri</string>
+    <string name="microsoft_account">Microsoft Account</string>
 </resources>
